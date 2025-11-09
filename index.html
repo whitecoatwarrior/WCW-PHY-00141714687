@@ -1,0 +1,2389 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbytFFLl5Lpcl0PInTsVNvypwcdlP7M5YEK5CVQqHxQq3TTPYWkeMH701JpIa5Yd-Rs/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_LR_03 = [
+    {
+        question: "Statement: A sequence generated by successive multiplication, starting from a non-zero value, will always exhibit terms of identical sign if a specific condition regarding its multiplier is met.
+Assumption I: The initial term itself is positive.
+Assumption II: The multiplier is a positive value.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For all terms in a geometric progression to have the same sign, the common multiplier must be positive. If the multiplier is positive, multiplying any term by it preserves its sign. If the multiplier were negative, the signs would alternate. The sign of the initial term only sets the initial sign, not the consistency of signs across the sequence. Thus, only Assumption II is necessary for the statement to hold true."
+    },
+    {
+        question: "Statement: A linear progression of values, where each step adds a constant, can uniquely determine all subsequent terms only if its initial point and rate of change are established.
+Assumption I: The progression extends indefinitely.
+Assumption II: The rate of change is a non-zero integer.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 3,
+        reasoning: "The statement describes the fundamental nature of an arithmetic progression: its terms are uniquely determined by its first term (initial point) and common difference (rate of change). This is a definitional property. Assumption I (indefinite extension) is about the length of the progression, not the unique determination of its terms once the rule is known. Assumption II (non-zero integer rate of change) is overly restrictive; the rate of change can be any constant real number, and the terms would still be uniquely determined. Therefore, neither assumption is strictly implicit for the core logical validity of the statement."
+    },
+    {
+        question: "Statement: To predict the next element in an unfamiliar numerical array, the underlying rule must govern the transformation from one element to the succeeding one, rather than merely describing individual elements.
+Assumption I: The array possesses an inherent, discoverable pattern.
+Assumption II: Each element's value is dependent solely on its immediate predecessor.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "For any prediction to be possible in a numerical array, it must fundamentally possess an inherent, discoverable pattern. Without such a pattern, any attempt at prediction would be mere guesswork. The statement's premise of 'predicting' implicitly relies on the existence of such a pattern. Assumption II is not necessarily true; patterns can depend on multiple preceding terms, an element's position, or a combination of factors, not just the immediate predecessor. Thus, Assumption I is essential."
+    },
+    {
+        question: "Statement: When a sequence of distinct numerical manipulations is presented without explicit grouping indicators, a universally accepted convention is essential to arrive at a singular, correct outcome.
+Assumption I: All involved numbers are integers.
+Assumption II: The operations include at least two different types of arithmetic actions.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement refers to the necessity of the order of operations (e.g., BODMAS/PEMDAS). This convention becomes critical for ensuring a 'singular, correct outcome' primarily when there's a mix of different types of arithmetic operations (e.g., addition and multiplication). If all operations are of the same type (e.g., all additions or all multiplications), the result remains the same regardless of order, due to associativity, even though convention still applies. The nature of the numbers (integers or real numbers) does not change the need for an order of operations convention when different types of operations are present. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A specific type of indefinitely continuing multiplicative sequence, under certain conditions, will approach a finite sum, even though it comprises an endless succession of terms.
+Assumption I: The terms of the sequence strictly decrease in absolute magnitude.
+Assumption II: The common multiplier's absolute value is less than one.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the convergence of an infinite geometric series. The fundamental condition for such a series to converge to a finite sum is that the absolute value of its common multiplier (ratio) must be less than one (|r| < 1). If this condition holds, it naturally follows that the terms of the sequence will strictly decrease in absolute magnitude, approaching zero. Therefore, Assumption II is the direct and primary implicit condition that enables the statement to be true. Assumption I is a consequence of II, rather than an independent assumption."
+    },
+    {
+        question: "Statement: A progression where each term is uniformly less than its forerunner can, under specific circumstances, never pass below a certain positive value.
+Assumption I: The initial term of the progression is sufficiently large and positive.
+Assumption II: The uniform reduction applied at each step is non-negative and diminishing.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 3,
+        reasoning: "The statement describes a progression where each term is 'uniformly less' than its predecessor, implying an arithmetic progression with a constant negative common difference. If the common difference is constant and negative, such a sequence will always eventually pass below any positive value, given enough terms, regardless of its starting point. The phrase 'never pass below a certain positive value' contradicts the nature of such a sequence unless the 'uniform reduction' somehow stops, which would mean it's not a uniform (constant) reduction. Assumption II (diminishing reduction) directly contradicts the 'uniformly less' premise. Therefore, neither assumption supports the statement, which appears to be fundamentally flawed in its premise about an arithmetic progression."
+    },
+    {
+        question: "Statement: Identifying the logical successor in a sequence of alphabetically arranged characters requires discerning a consistent step displacement between adjacent elements.
+Assumption I: The alphabet is treated as a cyclical continuum.
+Assumption II: The displacement value is constant throughout the sequence.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For one to 'discern a consistent step displacement', the underlying rule *must* involve a constant displacement value between elements. If the displacement value changed (e.g., +2, then +3), it wouldn't be a 'consistent' step displacement. Assumption I (cyclical alphabet) is not universally required for identifying a consistent step displacement; many letter series patterns operate strictly within the A-Z range without wrapping around. Thus, only Assumption II is implicit for the statement."
+    },
+    {
+        question: "Statement: The sum of an arbitrary collection of integers will always possess the same odd/even characteristic as the count of its odd members, irrespective of the values of its even members.
+Assumption I: The number zero is considered an even integer.
+Assumption II: The collection includes at least one odd integer.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The property that the parity of a sum depends only on the parity of its odd terms (even terms do not change parity) fundamentally relies on the definition of even and odd numbers, which includes zero being an even integer. If zero were not considered even, the rule might break down in certain contexts. Assumption II is incorrect; if the collection includes zero odd integers (i.e., all numbers are even), the sum is even, and the count of odd members (zero) is also even. The statement still holds. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: A sequence exhibiting alternating increases and decreases in magnitude cannot strictly be classified as either a pure arithmetic or a pure geometric progression.
+Assumption I: The magnitude changes are not uniformly zero.
+Assumption II: The sequence contains at least three distinct terms.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "To observe 'alternating increases and decreases in magnitude', you need at least three terms to establish one increase and one decrease. With only two terms, you can only observe one type of change (increase or decrease). A sequence with fewer than three terms cannot demonstrate alternation. Assumption I (non-uniformly zero magnitude changes) is too broad and isn't the core requirement for observing alternation, which requires multiple terms to compare. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: The aggregate sum of an odd quantity of consecutive numbers in an arithmetic sequence can always be directly derived by multiplying the middle term by the total count of terms.
+Assumption I: The arithmetic sequence consists solely of integers.
+Assumption II: The terms are symmetrically distributed around the middle term.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "This statement describes a well-known property of arithmetic progressions: Sum = (Number of terms) * (Middle Term) for an odd number of terms. This property holds because the middle term is also the average of all terms. The symmetric distribution of terms around the middle term is what makes the middle term equivalent to the average. The nature of the terms (integers or real numbers) does not affect this property. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A geometric progression will yield terms that perpetually alternate in sign if its common multiplier fulfills a specific characteristic.
+Assumption I: The initial term of the progression is non-zero.
+Assumption II: The common multiplier is a negative value.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For terms to 'perpetually alternate in sign', each multiplication must flip the sign of the preceding term. This occurs precisely when the common multiplier is a negative value. If the multiplier is positive, signs remain constant. If the initial term were zero (contradicting 'non-zero' in I), all terms would be zero and would not alternate signs. However, the *characteristic* of the multiplier that causes alternation is its negativity. The initial term being non-zero is a prerequisite for the terms to have signs to alternate, but the *condition* for alternation lies with the multiplier. Thus, Assumption II is the primary implicit assumption."
+    },
+    {
+        question: "Statement: Deciphering a complex alphabetic progression, which appears to interleave multiple patterns, necessitates a segmentation approach to identify its constituent sub-series.
+Assumption I: Each identified sub-series follows a consistent, discernible rule.
+Assumption II: The overall progression is not a singular, unsegmented, but highly intricate pattern.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement suggests a 'segmentation approach' to 'identify its constituent sub-series'. For this approach to be successful in 'deciphering' the progression, it is implicit that each of these sub-series, once identified, must follow a consistent and discernible rule. If the sub-series themselves were random or lacked a discernible rule, the segmentation would not lead to decipherment. Assumption II describes the nature of the overall progression as it 'appears', which is the context for applying the approach, not an implicit assumption for the *success* of decipherment."
+    },
+    {
+        question: "Statement: The result of combining any number with a specific arithmetic identity element will invariably be the original number itself.
+Assumption I: The specific arithmetic identity element is known and fixed.
+Assumption II: The operation being performed is either addition or multiplication.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the property of an identity element. For this property to hold universally for 'any number' and 'combining', the operation must be one that possesses a true identity element for all applicable contexts. This is true for addition (identity 0) and multiplication (identity 1). Subtraction has a right identity (x-0=x) but not a left identity (0-x != x generally), and similarly for division. Thus, Assumption II specifies the operations for which the statement is valid. Assumption I is inherent in the definition of an 'identity element', so it's a premise, not an implicit assumption required for the statement's truth."
+    },
+    {
+        question: "Statement: A sequence defined by a recursive rule will inevitably generate an infinite array of unique numbers, provided the rule ensures constant variation.
+Assumption I: The domain of numbers available for the sequence is infinite.
+Assumption II: The constant variation introduced by the rule is non-zero.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For a sequence to generate 'unique numbers' when defined by a recursive rule with 'constant variation', that variation must be non-zero. If the variation is zero (e.g., adding 0 each time), the numbers would not be unique (they would all be the same). If the variation is non-zero, each term will differ from the previous one, leading to unique numbers. Assumption I (infinite domain) is generally true for standard number systems and allows for infinite sequences, but the uniqueness of elements within the sequence is driven by the non-zero variation. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: An arithmetic progression containing both positive and negative terms must, at some point, either pass through zero or between two terms that bracket zero.
+Assumption I: The common difference of the progression is non-zero.
+Assumption II: The terms of the progression are real numbers.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "For an arithmetic progression to contain both positive and negative terms, its values must be changing. This requires that the common difference (the constant value added at each step) is non-zero. If the common difference were zero, all terms would be identical, and it would either be all positive, all negative, or all zero, but not contain both positive and negative terms. Assumption II (terms are real numbers) is typically a given for arithmetic progressions but is not the specific condition that forces the sequence to cross zero; the non-zero common difference is. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: For a geometric progression to have subsequent terms that are consistently zero, a particular characteristic of its multiplier is paramount.
+Assumption I: The initial term of the progression is non-zero.
+Assumption II: The common multiplier of the progression is exactly zero.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement focuses on 'subsequent terms' (i.e., terms after the initial one) being 'consistently zero'. If any term is multiplied by a common ratio of zero, all subsequent terms will become zero. Thus, for subsequent terms to be consistently zero due to the multiplier, the multiplier itself must be zero. If the initial term were zero (Assumption I being false), then *all* terms (including subsequent ones) would be zero, but this would be due to the initial term, not primarily the multiplier's characteristic being 'paramount' for *subsequent* terms. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: The sequence in which two distinct numbers are subjected to a basic binary operation will always yield an identical result, regardless of their order.
+Assumption I: The operation in question is either addition or multiplication.
+Assumption II: The distinct numbers involved are positive integers.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement describes the commutative property (a Op b = b Op a). This property holds true for addition and multiplication among the basic binary operations. It does not hold for subtraction (a-b != b-a generally) or division (a/b != b/a generally). Therefore, for the statement to be true, the operation must be restricted to addition or multiplication. Assumption II (positive integers) is not implicit; commutativity applies to real numbers, not just positive integers. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: If a letter sequence is transformed into a number sequence based on alphabetic position, then analyzing the numerical pattern can reveal the original letter pattern's logic.
+Assumption I: Each letter in the sequence corresponds to a unique numerical value.
+Assumption II: The numeric sequence itself exhibits a discernible mathematical pattern.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement asserts that analyzing the *numerical pattern* can reveal the original letter pattern's logic. For this revelation to occur, the numerical sequence *must* itself exhibit a discernible mathematical pattern. If the resulting numerical sequence is random or lacks a pattern, no logic can be revealed. Assumption I (unique numerical value for each letter) is part of the premise 'transformed... based on alphabetic position'; this mapping is assumed to be correct, not an implicit assumption for the *analysis* phase. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: In any finite arithmetic sequence, the sum of terms equidistant from the beginning and end will consistently be equal to the sum of the first and last terms.
+Assumption I: The common difference between terms remains constant throughout the sequence.
+Assumption II: The sequence contains at least two terms.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement refers to a property of arithmetic sequences. The phrase 'in any finite arithmetic sequence' means the property of having a constant difference (Assumption I) is part of the definition, not an implicit assumption for the statement's truth. For a sequence with a single term [a], the 'sum of terms equidistant from the beginning and end' is 'a', but the 'sum of the first and last terms' is 'a + a = 2a'. These are only equal if a = 0. Therefore, for the statement to hold 'consistently' for *any* arithmetic sequence, it must implicitly assume sequences with at least two terms to make the statement universally true for non-zero terms. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A sequence generated by successive multiplication, if its common factor exceeds one, will exhibit an ever-accelerating rate of increase between consecutive terms, assuming they are positive.
+Assumption I: The initial term of the sequence is a positive non-zero value.
+Assumption II: The common factor remains constant throughout the progression.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the behavior of a geometric progression. The 'ever-accelerating rate of increase' (i.e., the difference between consecutive terms grows larger) is a characteristic feature of geometric progressions when the common ratio (factor) is constant and greater than one. If the common factor were to change, the sequence would not be a standard geometric progression, and its rate of increase might not consistently accelerate. Assumption I is covered by the phrase 'assuming they are positive' in the statement itself. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A pattern sequence comprising both letters and numbers, if it perfectly repeats a finite block of elements, can be accurately extended indefinitely solely by identifying its repeating unit.
+Assumption I: The length of the repeating unit is greater than one.
+Assumption II: The identified repeating unit is the shortest possible such unit.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For a sequence to be 'accurately extended indefinitely solely by identifying its repeating unit', it is crucial that the identified unit is the *shortest possible* one. If a longer, non-minimal repeating unit is identified (e.g., 'ABCABC' instead of 'ABC'), the extension would still be consistent with the observed sequence, but it might not be the most fundamental or 'accurate' representation of the underlying pattern, and could lead to ambiguity if there were other rules operating on a smaller cycle. The length of the repeating unit being greater than one (Assumption I) is not strictly necessary; a unit of length one (e.g., 'A,A,A...') can also be accurately extended. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: For basic arithmetic operations, the existence of an inverse operation for any given number ensures that performing an operation and its inverse sequentially will restore the initial value.
+Assumption I: The identity element of an operation has a specific, consistent value.
+Assumption II: The number zero is never used as a divisor in the inverse operation.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the fundamental property of inverse operations (e.g., (x+y)-y = x, (x*y)/y = x). This property holds true for multiplication and division *provided that division by zero is excluded*. If division by zero were allowed, the inverse property for multiplication (and division itself) would fail when operating with zero. Therefore, Assumption II is a necessary implicit condition for the statement to hold for 'basic arithmetic operations'. Assumption I is a characteristic of identity elements themselves, which are usually assumed to exist for these operations, but not a specific condition for the restorative property of inverses when considering issues like division by zero. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: Inferring the next term in a sequence from previously observed terms is fundamentally possible only if the sequence adheres to a deterministic rule.
+Assumption I: The human mind is capable of discerning any existing deterministic rule.
+Assumption II: Randomness is absent from the sequence's generation process.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement claims that inference is possible *only if* there's a deterministic rule. The presence of randomness in the sequence's generation process would imply the absence of a deterministic rule, making fundamental inference impossible (as the next term would be unpredictable). Thus, for the statement to be true, randomness must be absent. Assumption I (human capability to discern) is about the observer's skill, not the fundamental possibility of inference if a rule exists. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: The average value of all elements within any arithmetic progression is always equivalent to the average of its initial and terminal elements.
+Assumption I: The progression contains a finite number of terms.
+Assumption II: The terms of the progression are ordered numerically.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The formula for the average of an arithmetic progression, (first term + last term) / 2, inherently requires the sequence to have a 'last term'. This condition is only met if the progression contains a finite number of terms. An infinite arithmetic progression does not have a terminal element, and its average is undefined or infinite. Assumption II (terms are ordered numerically) is inherent in the definition of an arithmetic progression itself, as a constant difference implies an order. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: The product of all terms in a finite geometric progression can be expressed using its first term, common ratio, and the total count of terms.
+Assumption I: The common ratio is non-zero.
+Assumption II: The number of terms in the progression is explicitly known.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement says the product 'can be expressed using' the first term, common ratio, and the total count of terms. For an expression to explicitly use the 'total count of terms', that count must be explicitly known. Without knowing the number of terms, it's impossible to form a definitive expression involving that count. While a non-zero common ratio (Assumption I) is usually a characteristic of non-trivial geometric progressions, a geometric series can have a zero common ratio (e.g., a, 0, 0, ...), and its product could still be expressed (as 0 if n>1), even if the terms 'using common ratio' might need careful handling. The core implicit assumption here is about the *knowability* of the number of terms. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: An operation combining addition and multiplication can often simplify complex expressions by distributing one across the other, resulting in an equivalent, albeit rearranged, form.
+Assumption I: The numbers involved are limited to integers.
+Assumption II: The property of distribution applies consistently across all such combinations.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the distributive property (e.g., a * (b + c) = a * b + a * c). For this property to genuinely 'simplify complex expressions' and ensure an 'equivalent' form, it must be a consistently applicable mathematical rule. If the property did not apply consistently, the 'simplification' would be invalid. Assumption I (numbers limited to integers) is not implicit; the distributive property holds for all real numbers. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: Interpreting a sequence of letters seemingly drawn from a standard alphabet requires an understanding of whether positions are absolute or relative within a contextual framework.
+Assumption I: The sequence is not entirely random.
+Assumption II: The standard alphabet comprises a fixed, finite set of characters.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "To 'interpret' a sequence implies searching for meaning or a pattern. If the sequence is entirely random, there is no underlying pattern or logic to interpret, rendering the act of interpretation futile. Therefore, for the interpretive process to have any validity, the sequence must not be random. Assumption II is a fundamental characteristic of a 'standard alphabet', which is generally a premise rather than an implicit assumption for the act of interpreting a sequence derived from it. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: The ability to unambiguously determine the subsequent term in a short number series implies that only one logical rule perfectly fits all preceding elements.
+Assumption I: The observer possesses sufficient inductive reasoning skills.
+Assumption II: Multiple equally plausible rules for the given terms are not permitted.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The core of the statement is 'unambiguously determine'. If there were 'multiple equally plausible rules' that fit the observed terms, then the subsequent term could not be unambiguously determined (e.g., for 1, 2, 4, the next term could be 7 (adding increasing differences) or 8 (doubling)). Therefore, for unambiguous determination, such multiple plausible rules must be absent. Assumption I (observer's skills) is about the person doing the determination, not about the inherent nature of the sequence that allows for unambiguous determination. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: The determination of any specific term in an arithmetic progression necessitates knowledge of its starting point, even if the common difference is explicitly provided.
+Assumption I: The common difference could be zero.
+Assumption II: The terms of the progression are not all identical.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 3,
+        reasoning: "The formula for the nth term of an arithmetic progression is `a_n = a_1 + (n-1)d`. This equation directly shows that `a_1` (the starting point) is always required to determine `a_n` if `n` and `d` are known, unless `n=1`. This necessity holds regardless of whether `d` is zero or non-zero. If `d=0` (Assumption I), then `a_n = a_1`, and `a_1` is still needed. If `d!=0` (related to Assumption II), `a_1` is still needed. The necessity of the starting point is inherent in the definition of an arithmetic progression, not dependent on these assumptions. Thus, neither assumption is implicit."
+    },
+    {
+        question: "Statement: An indefinitely extending geometric sequence, originating from a positive value, will perpetually approach zero without ever reaching it, if its common ratio falls within a specific range.
+Assumption I: The common ratio is a positive fraction less than one.
+Assumption II: The sequence consists of an infinite number of terms.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "For a sequence 'originating from a positive value' to 'perpetually approach zero without ever reaching it', its terms must remain positive and continually decrease. This requires the common ratio to be positive and less than one (0 < r < 1). If the ratio were negative, the terms would alternate in sign. If the ratio were greater than or equal to one, the terms would not approach zero. Assumption II ('indefinitely extending') is already stated in the premise, so it's not an implicit assumption for the *condition* of approaching zero. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: The operation of subtraction, when performed on two identical quantities, invariably results in the complete absence of value.
+Assumption I: The quantities involved are real numbers.
+Assumption II: The concept of 'absence of value' is synonymous with zero.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes the property that `x - x = 0`. For 'complete absence of value' to be precisely what happens when identical quantities are subtracted, it must be assumed that 'absence of value' refers specifically to the numerical value of zero. While subtraction works for various number sets (including real numbers, as in Assumption I), the core of the statement's conclusion relies on the interpretation of 'absence of value'. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A multi-layered series, combining alphanumeric elements, can be comprehensively predicted by analyzing its numerical and alphabetical components, provided each follows a discernible pattern.
+Assumption I: The rules for the numerical and alphabetical components operate independently.
+Assumption II: The sequence is not purely random in its construction.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement's core premise is that prediction is possible 'provided each follows a discernible pattern'. If the sequence were purely random, there would be no discernible patterns to follow, rendering comprehensive prediction impossible. Therefore, for the statement to hold, randomness must be absent. Assumption I (independence of rules) is not necessary; the components could be interdependent (e.g., the letter changes depending on the number's value) and still be predictable if a discernible pattern exists. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A series formed by consistently incrementing or decrementing a starting value will always produce distinct maximum and minimum terms if the process involves multiple steps.
+Assumption I: The increment or decrement applied at each step is non-zero.
+Assumption II: The number of steps involved is greater than zero.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "For a series to produce 'distinct maximum and minimum terms' (i.e., the maximum and minimum are not the same value), the terms within the series must vary. This variation occurs only if the increment or decrement applied at each step is non-zero. If the increment/decrement is zero, all terms would be identical, and thus the maximum and minimum would be the same. Assumption II ('multiple steps') is covered by the statement itself and is required to have a 'series', but it doesn't guarantee *distinct* max/min without a non-zero increment/decrement. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: The fundamental characteristic differentiating a geometric progression from other numeric sequences lies in its unchanging multiplicative relationship between successive elements.
+Assumption I: All terms in the progression are non-zero.
+Assumption II: The multiplicative relationship is a fixed value, not a function.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement defines a geometric progression by its 'unchanging multiplicative relationship'. For this relationship to be 'unchanging' and a fundamental differentiator, it must be a constant value (the common ratio), rather than a value that varies or is determined by a function. Assumption I (all terms are non-zero) is a common characteristic discussed in GPs, as division by zero for the ratio isn't defined, but it's the *constancy* of the multiplier that fundamentally defines the GP, even if an initial non-zero term with a zero ratio leads to subsequent zeros. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: Identifying the pattern in a letter series often involves recognizing a systematic skipping of characters in the alphabet.
+Assumption I: The alphabet is assumed to be ordered and finite.
+Assumption II: The skipping pattern itself is consistent and predictable.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For one to 'recognize a systematic skipping of characters' and identify a 'pattern', the skipping itself must adhere to a consistent and predictable rule. If the skipping were arbitrary, no pattern could be identified. Assumption I (alphabet being ordered and finite) describes fundamental properties of the alphabet, which are usually premises when dealing with letter series, not implicit assumptions about the *identification process* itself. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: The repeated multiplication of a number by itself, conventionally denoted by an exponent, consistently leads to an outcome of greater magnitude, provided the base is not unity.
+Assumption I: The base number is a positive value greater than one.
+Assumption II: The exponent is a positive integer greater than one.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 2,
+        reasoning: "For the outcome to 'consistently lead to an outcome of greater magnitude' through repeated multiplication (e.g., `x^n > x`), two conditions are crucial: 1. The base `x` must be a positive value greater than one. If `x` is between 0 and 1 (e.g., 0.5), repeated multiplication decreases magnitude (0.5^2 = 0.25). If `x` is negative, magnitudes may oscillate or not consistently increase. 2. The exponent `n` must be a positive integer greater than one. If `n=1`, `x^1 = x`, which is not a 'greater magnitude'. Therefore, for the statement to hold universally as described, both Assumption I and Assumption II are implicit. Since 'Both I and II are implicit' is not an option, and both are individually implicit, 'Either I or II is implicit' is the correct choice, indicating that at least one is implicit, which is true if both are."
+    },
+    {
+        question: "Statement: A numeric sequence, where each term is the sum of its two immediate predecessors, will eventually become strictly monotonic (either increasing or decreasing) if its initial two terms are both positive or both negative and non-zero.
+Assumption I: The sequence is defined over the real numbers.
+Assumption II: The magnitude of terms does not collapse to zero after a certain point.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement describes a Fibonacci-like sequence. If the initial two terms are both positive or both negative and non-zero, the sequence will indeed become strictly monotonic and diverge. This implies that the magnitudes of the terms will continue to grow, and not 'collapse to zero' or oscillate around zero. Such a collapse would prevent it from becoming strictly monotonic. Assumption I (defined over real numbers) is generally a premise for such sequences but not specific to the condition for *eventual monotonicity* as much as ensuring the values continue to follow the sum rule without unexpected numerical behavior. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: To guarantee a solitary, unambiguous numerical outcome from an intricate expression combining varied operations and nested groupings, adherence to a hierarchical procedural framework is paramount.
+Assumption I: All numerical values within the expression are non-negative.
+Assumption II: The hierarchical procedural framework itself is universally understood and consistently applied.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The statement highlights the necessity of an order of operations (like BODMAS/PEMDAS) for achieving a 'solitary, unambiguous numerical outcome'. For this framework to fulfill its purpose, it must be 'universally understood and consistently applied'; otherwise, different interpretations of the hierarchy would lead to different outcomes. Assumption I (non-negative numerical values) is irrelevant to the necessity of a hierarchical framework; order of operations applies to all types of real numbers, positive or negative. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: Converting a letter sequence into a numerical pattern based on alphabetical order implicitly relies on a consistent method for assigning numerical values.
+Assumption I: The alphabet's character set is finite.
+Assumption II: The first letter of the alphabet is assigned a specific, non-zero integer value.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For a 'consistent method' of assigning numerical values based on alphabetical order, a clear starting point for enumeration is essential. This typically means assigning a specific value (e.g., 1 or 0) to the first letter (A). If 'A' could be assigned different values inconsistently, or if its assigned value was not explicitly known, the 'consistent method' would be undermined. Assumption I (finite character set) is a general characteristic of most alphabets and is a premise for establishing such a mapping, but not the specific 'method' itself. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: An arithmetic progression, extended indefinitely with a non-zero common difference, will always contain any arbitrarily large positive or negative number.
+Assumption I: The initial term of the progression is not zero.
+Assumption II: The domain of numbers for the progression is infinite.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "For an arithmetic progression to 'always contain any arbitrarily large positive or negative number' (i.e., its range is unbounded), the number system within which it operates must itself be infinite. If the domain of numbers were finite, the progression would eventually reach a boundary. The statement already specifies 'non-zero common difference', which ensures the terms diverge. The initial term being zero or non-zero (Assumption I) does not prevent the progression from eventually containing arbitrarily large numbers if the common difference is non-zero. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: A geometric progression starting with a positive term will exhibit strictly increasing terms only if its common ratio exceeds one.
+Assumption I: The common ratio is a positive real number.
+Assumption II: The progression does not contain any zero terms.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "For a geometric progression starting with a positive term to have 'strictly increasing terms', the common ratio must not only exceed one but also be a positive value. If the common ratio were, for example, -2, the terms would alternate in sign (e.g., 1, -2, 4, -8), not strictly increase. Therefore, the common ratio being a positive real number (part of being >1) is a necessary underlying assumption. Assumption II (no zero terms) is implicitly true if the common ratio exceeds one and the first term is positive; if the ratio is >1, no term can be zero. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: Repeated subtraction of a uniform quantity from an initial value will invariably result in a negative outcome, given enough repetitions.
+Assumption I: The initial value is a positive quantity.
+Assumption II: The uniform quantity being subtracted is also a positive value.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 2,
+        reasoning: "For the result to 'invariably result in a negative outcome, given enough repetitions', two conditions must be met: 1. The 'initial value' must be positive. If it starts negative, it's already negative, and the statement is trivially true or misleadingly phrased for typical progression. 2. The 'uniform quantity being subtracted' must be positive. If it's negative, then subtracting a negative quantity means adding, which would push the result towards positive infinity. Therefore, both Assumption I and Assumption II are implicit. As 'Both I and II are implicit' is not an option, 'Either I or II is implicit' is the correct choice, as it is true that at least one of them is implicit when both are."
+    },
+    {
+        question: "Statement: Predicting the evolution of a series interweaving letters and numbers necessitates identifying distinct, yet possibly interacting, logical rules for each component.
+Assumption I: The series exhibits a consistent overall pattern.
+Assumption II: The number of elements in the series is finite.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The ability to 'predict the evolution' of any series, especially one involving 'identifying distinct logical rules', fundamentally requires that the series itself has a 'consistent overall pattern'. If there's no consistent pattern, prediction is impossible. Assumption II (finite number of elements) is not necessarily implicit; many series are conceptualized as infinite, and prediction can still be made. The consistency of the pattern is paramount. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: The position of any given term within an arithmetic sequence can be uniquely identified if its value, the first term, and the common difference are all known.
+Assumption I: The common difference is non-zero.
+Assumption II: The sequence consists only of real numbers.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The formula for finding the position (n) is `n = (a_n - a_1) / d + 1`. For `n` to be 'uniquely identified', the common difference `d` must be non-zero. If `d=0`, then all terms in the sequence have the same value as the first term (`a_n = a_1`). In this scenario, if you know a term's value, you cannot uniquely identify its position because that value appears at every position (e.g., in 5, 5, 5..., the value 5 is at positions 1, 2, 3...). Assumption II (real numbers) is a general context but not specific to ensuring the *uniqueness* of the position. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: If any single term in a non-trivial geometric progression is found to be zero, then all subsequent terms must also be zero.
+Assumption I: A non-trivial geometric progression has at least two terms.
+Assumption II: The common ratio is a real number.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The property stated is `if a_k = 0, then a_{k+1} = a_k * r = 0 * r = 0`. This holds true for any common ratio `r` that behaves as expected with multiplication by zero. The common ratio being a real number (Assumption II) ensures that `0 * r = 0` consistently. If `r` were undefined or non-standard, the outcome might differ. Assumption I ('non-trivial' implies it's not all zeros from the start, and 'at least two terms' is usually true for progressions discussed) is not directly implicit for the conditional statement 'if any single term... then all subsequent terms...'. The logic flows from one term to the next regardless of the total count of terms beyond the current and next. Thus, Assumption II is implicit."
+    },
+    {
+        question: "Statement: Determining the remainder after division, a distinct arithmetic operation, requires that both the dividend and divisor are positive integers.
+Assumption I: The divisor is strictly greater than the remainder.
+Assumption II: The operation is restricted to the domain of natural numbers.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement's core is about 'determining the remainder'. The definition of a remainder (in elementary arithmetic) is `dividend = divisor * quotient + remainder`, where the `remainder` is non-negative and strictly less than the `divisor`. Thus, the implicit assumption for the concept of 'remainder' itself is that the divisor must be strictly greater than the remainder (unless the remainder is zero). While standard division often involves positive integers (implied in the statement's premise), the modulo operation and remainder definition can be extended to negative numbers in various ways, so Assumption II (restricted to natural numbers) is not a universal implicit assumption for the concept of remainder. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: A letter series exhibiting a reverse alphabetical progression implies a decreasing numerical ordinality for its constituent characters.
+Assumption I: Each letter has a unique ordinal value.
+Assumption II: The standard alphabet is considered unidirectional from A to Z.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 1,
+        reasoning: "The concept of 'reverse alphabetical progression' inherently relies on the understanding that there is a defined 'forward' alphabetical progression (typically A to Z). If the standard alphabet was not considered unidirectional, or if its directionality wasn't implicitly defined, then 'reverse' would have no clear meaning. Thus, Assumption II is implicit. Assumption I (unique ordinal value) is fundamental to the concept of 'numerical ordinality' itself, which is already a premise of the statement (letters *have* ordinality), not an additional assumption for the implication between 'reverse progression' and 'decreasing ordinality'."
+    },
+    {
+        question: "Statement: The aggregation of terms from an arithmetic progression extending endlessly will inevitably result in an unbounded sum, given that its elements are not static.
+Assumption I: The progression's elements are represented by real numbers.
+Assumption II: The initial term of the progression is not zero.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement indicates an infinite arithmetic progression whose 'elements are not static' (meaning the common difference is non-zero). For such a progression to have an 'unbounded sum' (i.e., diverge to positive or negative infinity), the terms must be able to grow or shrink infinitely. This behavior is supported by the domain of real numbers. If the numbers were, for example, integers within a finite system, the sum might not be unbounded in the same way. The initial term being zero or non-zero (Assumption II) does not change the unbounded nature of the sum of an infinite AP with a non-zero common difference (e.g., 0, 2, 4, 6... still sums to infinity). Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: When confronted with a sequence that seems to follow multiple, concurrently active patterns, its underlying structure is likely a combination or alternation of simpler rules rather than a single, highly complex, monolithic rule.
+Assumption I: The simpler rules are more readily identifiable by human cognition.
+Assumption II: The series ultimately conforms to a logical, non-random construction.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement makes a claim about what is 'likely' to be the underlying structure, implying a cognitive preference or ease of identification. The preference for 'simpler rules' over a 'single, highly complex' one directly stems from the assumption that simpler rules are more readily identifiable by human cognition. If simpler rules were harder to discern, this likelihood would not hold. Assumption II (non-random construction) is a prerequisite for any pattern identification, but the statement specifically addresses *which type* of pattern is likely to be identified when multiple possibilities exist. Thus, Assumption I is implicit."
+    },
+    {
+        question: "Statement: For certain fundamental arithmetic operations involving three or more quantities, the grouping of operands will not alter the final outcome.
+Assumption I: The operations are restricted to either addition or multiplication.
+Assumption II: The quantities involved are distinct non-zero integers.",
+        options: [
+            "Only I is implicit",
+            "Only II is implicit",
+            "Either I or II is implicit",
+            "Neither I nor II is implicit"
+        ],
+        correctAnswer: 0,
+        reasoning: "The statement describes the associative property (e.g., (a+b)+c = a+(b+c)). This property holds true for addition and multiplication among the fundamental arithmetic operations. It does not hold for subtraction (a-(b-c) != (a-b)-c generally) or division. Therefore, for the statement to be true, the operations must be restricted to addition or multiplication. Assumption II (distinct non-zero integers) is not implicit; associativity applies to all real numbers, and distinctness or non-zero nature doesn't define associativity. Thus, Assumption I is implicit."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Logical Reasoning ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-LR-03';
+let quizData = quizData_WCW_LR_03;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-LR-03', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-LR-03', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-LR-03', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_LR_03;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_LR_03;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_LR_03[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_LR_03.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
